@@ -2,10 +2,7 @@ package com.androidfactory.onequote
 
 import androidx.compose.ui.graphics.Color
 
-/**
- * Represents the overall state of the app. This data is the source of truth
- * for our Composables to operate off of to render the correct UI.
- */
+
 data class AppState(
     val navigation: Navigation,
     val quoteOfTheDay: Quote
