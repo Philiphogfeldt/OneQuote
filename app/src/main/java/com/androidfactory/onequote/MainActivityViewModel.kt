@@ -2,12 +2,18 @@ package com.androidfactory.onequote
 
 import androidx.lifecycle.ViewModel
 import com.androidfactory.onequote.AppState.Navigation.Page
+import com.androidfactory.onequote.network.QuoteRepository
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class MainActivityViewModel : ViewModel() {
+@HiltAndroidApp
+class MainActivityViewModel @Inject constructor(
+    private val quoteRepository: QuoteRepository
+) : ViewModel() {
 
     private val _appState = MutableStateFlow(AppState.initial())
     val appState: StateFlow<AppState> = _appState.asStateFlow()
