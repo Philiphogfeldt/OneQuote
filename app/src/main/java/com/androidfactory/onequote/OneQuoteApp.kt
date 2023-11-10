@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidfactory.onequote.navigation.HeaderNavigation
+import dagger.hilt.android.HiltAndroidApp
 
 @Composable
 fun OneQuoteApp(

@@ -21,6 +21,7 @@ import com.androidfactory.onequote.ui.theme.OneQuoteTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidfactory.onequote.navigation.HeaderNavigation
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 
