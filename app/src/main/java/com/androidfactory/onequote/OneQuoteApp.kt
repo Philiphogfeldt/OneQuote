@@ -19,6 +19,7 @@ fun OneQuoteApp(
 ) {
     val appState by viewModel.appState.collectAsStateWithLifecycle()
 
+
     viewModel.fetchData()
 
     Column(
@@ -32,7 +33,6 @@ fun OneQuoteApp(
             onClick = { viewModel.selectPage(it) }
         )
 
-        // Page content
         val selectedPage = appState.navigation.selectedPage
         when (selectedPage.title) {
             "All quotes" -> {

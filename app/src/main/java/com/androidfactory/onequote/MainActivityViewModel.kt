@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidfactory.onequote.AppState.Navigation.Page
 import com.androidfactory.onequote.network.QuoteRepository
+import com.androidfactory.onequote.network.models.NetworkQuote
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,6 +23,7 @@ class MainActivityViewModel @Inject constructor(
     private val _appState = MutableStateFlow(AppState.initial())
     val appState: StateFlow<AppState> = _appState.asStateFlow()
 
+
     fun selectPage(page: Page) {
         _appState.update {
             return@update it.copy(
@@ -34,6 +36,15 @@ class MainActivityViewModel @Inject constructor(
 
     fun fetchData() = viewModelScope.launch {
         val quoteOfTheDayResponse = quoteRepository.getQuoteOfTheDay()
-        Log.e("Response", quoteOfTheDayResponse?.toString() ?: "Failed to fetch")
+        Log.d("Response", quoteOfTheDayResponse?.toString() ?: "Failed to fetch")
+        _appState.update {
+            return@update it.copy(
+                quoteOfTheDay = AppState.Quote(
+                    author = quoteOfTheDayResponse?.a ?: "",
+                    displayText = quoteOfTheDayResponse?.q ?: "",
+                    isFavorite = false
+                )
+            )
+        }
     }
 }

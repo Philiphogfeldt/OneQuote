@@ -12,4 +12,5 @@ class QuoteRepository @Inject constructor(
     suspend fun getQuoteOfTheDay(): NetworkQuote? {
         return quoteService.getQuoteOfTheDay().body()?.first()
     }
+
 }
