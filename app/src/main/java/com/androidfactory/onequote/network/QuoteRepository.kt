@@ -13,4 +13,6 @@ class QuoteRepository @Inject constructor(
         return quoteService.getQuoteOfTheDay().body()?.first()
     }
 
+    //function med "quotes" call för alla
+
 }

@@ -35,6 +35,9 @@ class MainActivityViewModel @Inject constructor(
     }
 
     fun fetchData() = viewModelScope.launch {
+
+        //Lägg till för skapa lista med alla quotes
+
         val quoteOfTheDayResponse = quoteRepository.getQuoteOfTheDay()
         Log.d("Response", quoteOfTheDayResponse?.toString() ?: "Failed to fetch")
         _appState.update {
