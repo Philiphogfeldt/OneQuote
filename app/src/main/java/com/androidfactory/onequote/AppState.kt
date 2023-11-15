@@ -33,8 +33,8 @@ data class AppState(
                     selectedPage = pages[1]
                 ),
                 quoteOfTheDay = Quote(
-                    displayText = "Nothing good ever comes of violence.",
-                    author = "Martin Luther",
+                    displayText = "No data, fetch",
+                    author = "...",
                     isFavorite = true
                 )
             )

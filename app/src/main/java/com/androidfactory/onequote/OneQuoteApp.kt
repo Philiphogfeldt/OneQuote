@@ -1,7 +1,12 @@
 package com.androidfactory.onequote
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -11,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidfactory.onequote.navigation.HeaderNavigation
-import dagger.hilt.android.HiltAndroidApp
 
 @Composable
 fun OneQuoteApp(
@@ -20,7 +24,7 @@ fun OneQuoteApp(
     val appState by viewModel.appState.collectAsStateWithLifecycle()
 
 
-    viewModel.fetchData()
+    //viewModel.fetchData()
 
     Column(
         modifier = Modifier
@@ -42,7 +46,8 @@ fun OneQuoteApp(
                 quote = appState.quoteOfTheDay,
                 onFavoriteClicked = {
                     // todo handle onClick
-                }
+                },
+                onFetchQuoteClicked = { viewModel.fetchData()}
             )
             "Favorites" -> {
                 TempContent(selectedPage.color)

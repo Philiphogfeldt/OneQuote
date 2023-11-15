@@ -43,7 +43,9 @@ fun DailyQuoteScreen(
     onFetchQuoteClicked: () -> Unit = { viewModel.fetchData() }) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+
     ) {
         Box(
             modifier = Modifier
@@ -96,14 +98,15 @@ fun DailyQuoteScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
             }
-            Button(
-                onClick = { onFetchQuoteClicked() },
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(16.dp)
-            ) {
-                Text("Get Quotes")
-            }
+
         }
+        Button(
+            onClick = { onFetchQuoteClicked() },
+            modifier = Modifier
+                .padding(20.dp)
+        ) {
+            Text("Get Quote")
+        }
+
     }
 }
