@@ -5,7 +5,8 @@ import androidx.compose.ui.graphics.Color
 
 data class AppState(
     val navigation: Navigation,
-    val quoteOfTheDay: Quote
+    val quoteOfTheDay: Quote,
+    val allQuotes: List<Quote> = emptyList()
 ) {
     data class Quote(
         val displayText: String,

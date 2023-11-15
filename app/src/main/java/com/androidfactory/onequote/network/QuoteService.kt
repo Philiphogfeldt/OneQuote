@@ -10,4 +10,6 @@ interface QuoteService {
     suspend fun getQuoteOfTheDay(): Response<List<NetworkQuote>>
 
     //get med "quotes" call för alla
+    @GET("quotes")
+    suspend fun getAllQuotes(): List<NetworkQuote>
 }

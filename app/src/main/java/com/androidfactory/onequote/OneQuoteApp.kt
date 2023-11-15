@@ -39,9 +39,13 @@ fun OneQuoteApp(
 
         val selectedPage = appState.navigation.selectedPage
         when (selectedPage.title) {
-            "All quotes" -> {
-                TempContent(selectedPage.color)
-            }
+            "All quotes" -> AllQuotesScreen(
+                quotes = appState.allQuotes,
+                onFavoriteClicked = {
+                    //todo handle onClick
+                },
+                onFetchAllQuotesClicked = { viewModel.fetchAllQuotes() }
+            )
             "Daily quote" -> DailyQuoteScreen(
                 quote = appState.quoteOfTheDay,
                 onFavoriteClicked = {

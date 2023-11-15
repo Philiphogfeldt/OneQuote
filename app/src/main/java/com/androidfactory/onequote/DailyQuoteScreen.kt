@@ -98,7 +98,6 @@ fun DailyQuoteScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
             }
-
         }
         Button(
             onClick = { onFetchQuoteClicked() },
@@ -107,6 +106,5 @@ fun DailyQuoteScreen(
         ) {
             Text("Get Quote")
         }
-
     }
 }

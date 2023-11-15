@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidfactory.onequote.AppState.Navigation.Page
 import com.androidfactory.onequote.network.QuoteRepository
-import com.androidfactory.onequote.network.models.NetworkQuote
-import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -36,8 +34,6 @@ class MainActivityViewModel @Inject constructor(
 
     fun fetchData() = viewModelScope.launch {
 
-        //Lägg till för skapa lista med alla quotes
-
         val quoteOfTheDayResponse = quoteRepository.getQuoteOfTheDay()
         Log.d("Response", quoteOfTheDayResponse?.toString() ?: "Failed to fetch")
         _appState.update {
@@ -50,4 +46,19 @@ class MainActivityViewModel @Inject constructor(
             )
         }
     }
+
+    fun fetchAllQuotes() = viewModelScope.launch {
+        val networkQuotes = quoteRepository.getAllQuotes()
+        val quotes = networkQuotes.map { networkQuote ->
+            AppState.Quote(
+                author = networkQuote.a,
+                displayText = networkQuote.q,
+                isFavorite = false
+            )
+        }
+        _appState.update { currentState ->
+            currentState.copy(allQuotes = quotes)
+        }
+    }
+
 }
