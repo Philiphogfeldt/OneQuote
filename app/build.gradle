@@ -50,7 +50,16 @@ android {
 }
 
 dependencies {
+    // Compose BOM
+    /*implementation(platform("androidx.compose:compose-bom:2023.10.01"))
 
+    // Compose dependencies without version numbers
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")*/
+
+    //Innan Compose
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 

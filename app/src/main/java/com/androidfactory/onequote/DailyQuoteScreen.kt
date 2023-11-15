@@ -3,8 +3,18 @@ package com.androidfactory.onequote
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -21,10 +31,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidfactory.onequote.ui.theme.Purple
 
+
 @Composable
-fun DailyQuoteScreen(quote: AppState.Quote, onFavoriteClicked: (AppState.Quote) -> Unit) {
+fun DailyQuoteScreen(
+    quote: AppState.Quote,
+    onFavoriteClicked: (AppState.Quote) -> Unit,
+    viewModel: MainActivityViewModel = viewModel(),
+    onFetchQuoteClicked: () -> Unit = { viewModel.fetchData() }) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
@@ -78,6 +94,15 @@ fun DailyQuoteScreen(quote: AppState.Quote, onFavoriteClicked: (AppState.Quote) 
                     modifier = Modifier.align(Alignment.Center),
                     tint = Color.White
                 )
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+            Button(
+                onClick = { onFetchQuoteClicked() },
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(16.dp)
+            ) {
+                Text("Get Quotes")
             }
         }
     }
