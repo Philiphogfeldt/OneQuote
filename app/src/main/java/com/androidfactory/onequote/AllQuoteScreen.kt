@@ -28,10 +28,10 @@ fun AllQuotesScreen(
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween, // Ändrad till SpaceBetween
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LazyColumn(modifier = Modifier.weight(1f)) { // Lägger till weight modifier för att fylla tillgängligt utrymme
+        LazyColumn(modifier = Modifier.weight(1f)) {
             items(quotes) { quote ->
                 QuoteItem(quote, onFavoriteClicked)
             }
