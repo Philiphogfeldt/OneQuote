@@ -10,7 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -66,7 +70,16 @@ fun QuoteItem(quote: AppState.Quote, onFavoriteClicked: (AppState.Quote) -> Unit
                 text = quote.author,
                 color = Color.White
             )
-            // Fixa Favoknapp
+            Button(
+                onClick = { onFavoriteClicked(quote) },
+                modifier = Modifier
+                    .padding(top = 8.dp)
+            ) {
+                Icon(
+                    imageVector = if (quote.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    contentDescription = "Favorite"
+                )
+            }
         }
     }
 }
